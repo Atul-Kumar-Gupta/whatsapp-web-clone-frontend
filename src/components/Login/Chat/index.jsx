@@ -8,7 +8,7 @@ import Icon from "components/Icon";
 import Search from "./components/Search";
 import Profile from "./components/Profile";
 import Convo from "./components/Convo";
-import { useUsersContext } from "context/usersContext";
+// import { useUsersContext } from "context/usersContext";
 
 const Chat = ({ match, history }) => {
 	const { users, setUserAsUnread, addNewMessage } = useUsersContext();

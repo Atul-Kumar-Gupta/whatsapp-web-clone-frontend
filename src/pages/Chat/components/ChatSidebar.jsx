@@ -6,16 +6,16 @@ const ChatSidebar = ({ active, closeSidebar, heading, children }) => {
 		<aside className={`chat-sidebar ${active ? "chat-sidebar--active" : ""}`}>
 			<header className="header chat-sidebar__header">
 				<button
-				//  onClick={closeSidebar}
+				 onClick={closeSidebar}
 				>
 					<Icon id="cancel" className="chat-sidebar__header-icon" />
 				</button>
 				<h2 className="chat-sidebar__heading">
-					{/* {heading} */}
+					{heading}
 				</h2>
 			</header>
 			<div className="chat-sidebar__content">
-				{/* {children} */}
+				{children}
 			</div>
 		</aside>
 	);

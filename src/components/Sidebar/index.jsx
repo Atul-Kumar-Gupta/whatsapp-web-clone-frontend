@@ -54,9 +54,9 @@ const Sidebar = () => {
 				<input className="search" placeholder="Search or start a new chat" />
 			</div>
 			<div className="sidebar__contacts">
-				{contacts.map((contact, index) => (
-					<Contact key={index} contact={contact} />
-				))}
+				{/* {contacts.map((contact, index) => ( */}
+					<Contact key={1} contact={[]} />
+				{/* ))} */}
 			</div>
 		</aside>
 	);

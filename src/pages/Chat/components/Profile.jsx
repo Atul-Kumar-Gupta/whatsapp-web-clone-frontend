@@ -25,14 +25,14 @@ const groups = [
 	},
 ];
 
-const Profile = ({ user }) => {
+const Profile = () => {
 	return (
 		<div className="profile">
 			<div className="profile__section profile__section--personal">
 				<div className="profile__avatar-wrapper">
-					<img src={user?.profile_picture} alt={user?.name} className="avatar" />
+					<img src={'profileName'} alt={'profileName'} className="avatar" />
 				</div>
-				<h2 className="profile__name"> {user?.name} </h2>
+				<h2 className="profile__name"> {'userName'} </h2>
 			</div>
 
 			<div className="profile__section profile__section--media">
