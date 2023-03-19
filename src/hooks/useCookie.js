@@ -27,7 +27,7 @@ export default function useCookie(key, initialvalue) {
     });
 
     const updateCookie = (newValue) => {
-        debugger
+        
         setCookie(newValue);
         document.cookie = `${key}=${newValue};`;
     };
@@ -38,6 +38,7 @@ export default function useCookie(key, initialvalue) {
             var now = new Date();
             now.setMonth(now.getMonth() - 1);
             document.cookie = `${key}=;expires= ${now.toUTCString()}`;
+            window.location.reload();
         }
     };
 

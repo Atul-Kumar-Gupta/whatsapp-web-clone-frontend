@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../Icon/index";
 import { Link } from "react-router-dom";
 import formatTime from "../../utils/formatTime";
+import profilePicture from '../../assets/images/profile-picture-default.jpg' 
 // import { useUsersContext } from "context/usersContext";
 
 const Contact = ({ contact }) => {
@@ -25,7 +26,7 @@ const Contact = ({ contact }) => {
 		<div className="sidebar-contact">
 			<div className="sidebar-contact__avatar-wrapper">
 				<img
-					src={'contact.profile_picture'}
+					src={profilePicture}
 					alt={'contact.profile_picture'}
 					className="avatar"
 				/>

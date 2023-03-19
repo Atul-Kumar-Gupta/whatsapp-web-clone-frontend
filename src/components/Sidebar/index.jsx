@@ -1,20 +1,18 @@
 import React from "react";
 import "./styles/main.css";
-import avatar from "../../assets/images/profile-picture-girl-1.jpeg";
 import Icon from "../Icon/index";
 import Alert from "./Alert";
 import Contact from "./Contact";
 import OptionsBtn from "../OptionsButton/index";
-// import { useUsersContext } from "context/usersContext";
+import profilePicture from '../../assets/images/profile-picture-default.jpg' 
 
 const Sidebar = () => {
-	// const { users: contacts } = useUsersContext();
 	let contacts = []
 	return (
 		<aside className="sidebar">
 			<header className="header">
 				<div className="sidebar__avatar-wrapper">
-					<img src={avatar} alt="Karen Okonkwo" className="avatar" />
+					<img src={profilePicture} alt="Karen Okonkwo" className="avatar" />
 				</div>
 				<div className="sidebar__actions">
 					<button className="sidebar__action" aria-label="Status">
