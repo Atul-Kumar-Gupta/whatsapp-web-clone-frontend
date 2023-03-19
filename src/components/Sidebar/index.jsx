@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/main.css";
 import Icon from "../Icon/index";
 import Alert from "./Alert";
 import Contact from "./Contact";
 import OptionsBtn from "../OptionsButton/index";
-import profilePicture from '../../assets/images/profile-picture-default.jpg' 
+import profilePicture from '../../assets/images/profile-picture-default.jpg'
+import { searchProfile } from "../../actions/user";
 
 const Sidebar = () => {
-	let contacts = []
+	let [contacts, setContacts] = useState([])
+	const [state, setState] = useState(
+		{
+			mobile: { name: 'mobile', value: '', isRequired: true, error: '' },
+		}
+	)
+	const onChange = async (e) => {
+		const { value, name } = e.target;
+		setState({ ...state, [name]: { ...state[name], value: value } })
+		const response = await searchProfile(value)
+		setContacts(response.result)
+	}
 	return (
 		<aside className="sidebar">
 			<header className="header">
@@ -49,12 +61,12 @@ const Sidebar = () => {
 						<Icon id="back" />
 					</button>
 				</div>
-				<input className="search" placeholder="Search or start a new chat" />
+				<input className="search" placeholder="Search or start a new chat" name={state.mobile.name} value={state.mobile.value} onChange={(e) => onChange(e)} />
 			</div>
 			<div className="sidebar__contacts">
-				{/* {contacts.map((contact, index) => ( */}
-					<Contact key={1} contact={[]} />
-				{/* ))} */}
+				{contacts.map((contact, index) => (
+					<Contact key={index} contact={contact} />
+				))}
 			</div>
 		</aside>
 	);

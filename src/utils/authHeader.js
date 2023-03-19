@@ -1,5 +1,4 @@
 import constant from "../constant";
-import useCookie from "../hooks/useCookie";
 
 const getCookieValue = (key) => {
     const allcookies = document.cookie;

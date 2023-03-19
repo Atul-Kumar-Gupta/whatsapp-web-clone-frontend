@@ -2,10 +2,12 @@ import React from "react";
 import Icon from "../Icon/index";
 import { Link } from "react-router-dom";
 import formatTime from "../../utils/formatTime";
-import profilePicture from '../../assets/images/profile-picture-default.jpg' 
+import profilePicture from '../../assets/images/profile-picture-default.jpg'
 // import { useUsersContext } from "context/usersContext";
 
 const Contact = ({ contact }) => {
+	let pp = contact?.image?.length > 0 ? contact.image : profilePicture
+	let name = contact?.name?.length > 0 ? contact.name : contact.mobile
 	// const { setUserAsUnread } = useUsersContext();
 	// const getLastMessage = () => {
 	// 	const messageDates = Object.keys(contact.messages);
@@ -18,22 +20,17 @@ const Contact = ({ contact }) => {
 	// const lastMessage = getLastMessage(contact);
 
 	return (
-		// <Link
-		// 	className="sidebar-contact"
-		// 	to={`/chat/${1}`}
-		// 	// onClick={() => setUserAsUnread(contact.id)}
-		// >
 		<div className="sidebar-contact">
 			<div className="sidebar-contact__avatar-wrapper">
 				<img
-					src={profilePicture}
+					src={pp}
 					alt={'contact.profile_picture'}
 					className="avatar"
 				/>
 			</div>
 			<div className="sidebar-contact__content">
 				<div className="sidebar-contact__top-content">
-					<h2 className="sidebar-contact__name"> {'contact.name'} </h2>
+					<h2 className="sidebar-contact__name"> {name} </h2>
 					<span className="sidebar-contact__time">
 						{'formatTime(lastMessage.time)'}
 					</span>
@@ -57,7 +54,7 @@ const Contact = ({ contact }) => {
 							className={`sidebar-contact__message ${'!!contact.unread' ? "sidebar-contact__message--unread" : ""
 								}`}
 						>
-							{'contact.typing ? <i> typing...</i> : lastMessage?.content'}
+							{contact.typing ? <i> typing...</i> : 'lastMessage?.content'}
 						</span>
 					</p>
 					<div className="sidebar-contact__icons">
