@@ -17,3 +17,20 @@ export const updateDetails = () => async (dispatch) => {
 
     })
 }
+
+export const updateSocketConnection = (socket) => (dispatch) => {
+    dispatch({
+        type: 'update_socket_connection',
+        payload: socket
+
+    })
+}
+
+export const updateChatWindowUser = (mobile) => (dispatch) => {
+    debugger
+    dispatch({
+        type: 'update_current_chat_user',
+        payload: mobile
+
+    })
+}

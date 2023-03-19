@@ -10,7 +10,6 @@ import io from 'socket.io-client'
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from './state/index'
-import { getInfo } from './actions/user';
 
 
 const userPrefersDark =
@@ -20,13 +19,19 @@ const socket = io.connect(process.env.REACT_APP_BASE_URL)
 
 function LoggedIn() {
   const dispatch = useDispatch()
-  const { connect, updateDetails } = bindActionCreators(actionCreators, dispatch)
+  const { connect, updateDetails, updateSocketConnection } = bindActionCreators(actionCreators, dispatch)
   const state = useSelector(state => state)
+  const { info } = state
+  console.log(info?.mobile)
+  useEffect(() => {
+    updateSocketConnection(socket);
+    socket.emit('go_online', { connectionId: socket.id, mobile: info?.mobile })
+    
+  }, [socket, info])
 
   useEffect(() => {
     connect(socket.id)
     updateDetails()
-    // })
   }, [])
   return (
     <React.Fragment>

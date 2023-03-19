@@ -2,28 +2,35 @@ import Icon from "../../../components/Icon/index";
 import React from "react";
 import media from "../../../assets/images/women.jpeg";
 import formatTime from "../../../utils/formatTime";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../../state";
 
-const Convo = ({ lastMsgRef, messages: allMessages }) => {
+const Convo = () => {
+	// const dispatch = useDispatch()
+	// const { connect, updateDetails, updateSocketConnection } = bindActionCreators(actionCreators, dispatch)
+	const { mobile } = useSelector(state => state)
+
 	// const dates = Object.keys(allMessages);
 
 	// return dates.map((date, dateIndex) => {
-		// const messages = allMessages[date];
-		return (
-			<div 
-			// key={dateIndex}
-			>
-				<div className="chat__date-wrapper">
-					<span className="chat__date"> {'DUMMY DATE'}</span>
-				</div>
-				{/* {dateIndex === 0 && ( */}
-					<p className="chat__encryption-msg">
-						<Icon id="lock" className="chat__encryption-icon" />
-						Messages are end-to-end encrypted. No one outside of this chat, not
-						even WhatsApp, can read or listen to them. Click to learn more.
-					</p>
-				{/* )} */}
-				<div className="chat__msg-group">
-					{/* {messages.map((message, msgIndex) => {
+	// const messages = allMessages[date];
+	return (
+		<div
+		// key={dateIndex}
+		>
+			<div className="chat__date-wrapper">
+				<span className="chat__date"> {'DUMMY DATE'}</span>
+			</div>
+			{/* {dateIndex === 0 && ( */}
+			<p className="chat__encryption-msg">
+				<Icon id="lock" className="chat__encryption-icon" />
+				Messages are end-to-end encrypted. No one outside of this chat, not
+				even WhatsApp, can read or listen to them. Click to learn more.
+			</p>
+			{/* )} */}
+			<div className="chat__msg-group">
+				{/* {messages.map((message, msgIndex) => {
 						const assignRef = () =>
 							dateIndex === dates.length - 1 && msgIndex === messages.length - 1
 								? lastMsgRef
@@ -109,9 +116,9 @@ const Convo = ({ lastMsgRef, messages: allMessages }) => {
 							</>
 						);
 					})} */}
-				</div>
 			</div>
-		);
+		</div>
+	);
 	// }
 	// );
 };

@@ -3,11 +3,18 @@ import Icon from "../Icon/index";
 import { Link } from "react-router-dom";
 import formatTime from "../../utils/formatTime";
 import profilePicture from '../../assets/images/profile-picture-default.jpg'
+import { bindActionCreators } from "redux";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators } from "../../state";
 // import { useUsersContext } from "context/usersContext";
 
 const Contact = ({ contact }) => {
+	const dispatch = useDispatch()
+	const { updateChatWindowUser } = bindActionCreators(actionCreators, dispatch)
+	// const state = useSelector(state => state)
 	let pp = contact?.image?.length > 0 ? contact.image : profilePicture
 	let name = contact?.name?.length > 0 ? contact.name : contact.mobile
+	let mobile = contact.mobile.length > 0 ? contact.mobile : ''
 	// const { setUserAsUnread } = useUsersContext();
 	// const getLastMessage = () => {
 	// 	const messageDates = Object.keys(contact.messages);
@@ -20,7 +27,9 @@ const Contact = ({ contact }) => {
 	// const lastMessage = getLastMessage(contact);
 
 	return (
-		<div className="sidebar-contact">
+		<div className="sidebar-contact" onClick={() => {
+			updateChatWindowUser(mobile)
+		}}>
 			<div className="sidebar-contact__avatar-wrapper">
 				<img
 					src={pp}
